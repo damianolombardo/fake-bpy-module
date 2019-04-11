@@ -323,6 +323,11 @@ class FunctionInfo(Info):
     def parameters(self):
         return self._parameters
 
+    def parameter(self, idx):
+        if idx >= len(self._parameters):
+            raise RuntimeError("Out of range")
+        return self._parameters[idx]
+
     def set_parameters(self, params):
         self._parameters = []
         self.add_parameters(params)
@@ -844,6 +849,11 @@ class BaseAnalyzer:
     def _modify(self, result):
         pass
 
+    def update_parameter_if_not_equal(self, info, param_idx, expect):
+        if info.parameter(param_idx) == expect:
+            return
+        info.set_parameter(param_idx, expect)
+
     def analyze(self, filename):
         tree = et.parse(filename)
         root = tree.getroot()       # <document>
@@ -949,12 +959,29 @@ class BmeshAnalyzer(BaseAnalyzer):
                     if count >= 2:
                         info.set_parameter(i, s + "_" + str(count))
 
+    def __handle_extrude_face_region(self, info):
+        self.update_parameter_if_not_equal(info, 0, "bmesh")
+        self.update_parameter_if_not_equal(info, 1, "geom=[]")
+        self.update_parameter_if_not_equal(info, 2, "edges_exclude=[]")
+        self.update_parameter_if_not_equal(info, 3, "use_keep_orig=False")
+        self.update_parameter_if_not_equal(info, 4, "use_select_history=False")
+
+    def __handle_translate(self, info):
+        self.update_parameter_if_not_equal(info, 0, "bmesh")
+        self.update_parameter_if_not_equal(info, 1, "vec=Vector()")
+        self.update_parameter_if_not_equal(info, 2, "space=Matrix()")
+        self.update_parameter_if_not_equal(info, 3, "verts=[]")
+
     def _modify(self, result):
         for sections in result:
             for s in sections:
                 if s.type() == "function":
                     if s.name() == "wireframe":
                         self.__rename_duplicate(s)
+                    elif s.name() == 'extrude_face_region':
+                        self.__handle_extrude_face_region(s)
+                    elif s.name() == 'translate':
+                        self.__handle_translate(s)
 
 
 class GpuAnalyzer(BaseAnalyzer):
