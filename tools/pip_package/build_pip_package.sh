@@ -37,7 +37,7 @@ blender_dir=${4}
 
 
 # check if the target is develop or release
-if [ ! ${version} = "release" ] || [ ! ${version} = "develop" ]; then
+if [ ! ${target} = "release" ] && [ ! ${target} = "develop" ]; then
     echo "target must be release or develop"
     exit 1
 fi
@@ -70,7 +70,7 @@ if [ -e ${release_dir} ]; then
 fi
 
 
-if [${target} = "release" ]; then
+if [ ${target} = "release" ]; then
     # setup release/temp directories
     mkdir ${release_dir}
     mkdir ${tmp_dir} && cd ${tmp_dir}
@@ -95,7 +95,7 @@ if [${target} = "release" ]; then
     cd ${SCRIPT_DIR}
     rm -rf ${tmp_dir}
 
-elif [ ${target} = "develop"]; then
+elif [ ${target} = "develop" ]; then
     # setup release/temp directories
     mkdir ${release_dir} && cd ${release_dir}
     cp ${SCRIPT_DIR}/setup.py .
@@ -113,5 +113,6 @@ elif [ ${target} = "develop"]; then
     # clean up
     cd ${SCRIPT_DIR}
     rm -rf ${tmp_dir}
+fi
 
 exit 0
