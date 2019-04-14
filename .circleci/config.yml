@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/fake-bpy-module
+    working_directory: ~/
     docker:
       - image: ubuntu:latest
     branches:
@@ -9,6 +9,7 @@ jobs:
         - master
         - spike_pypi
     steps:
+      - checkout
       - run:
           name: Get required packages
           command: apt-get update && apt-get install -y git
@@ -18,9 +19,11 @@ jobs:
       - run:
           name: Download all Blender
           command: bash tools/utils/download_blender.sh all blender-bin
+          working_directory: ~/fake-bpy-module
       - run:
           name: Generate pip Packages
           command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin/blender-2.78-windows64
+          working_directory: ~/fake-bpy-module
       - store_artifacts:
           path: ~/fake-bpy-module/tools/pip_package
           destination: fake-bpy-module-2.78
