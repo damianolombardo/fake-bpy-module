@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/fake-bpy-module
+    steps:
+      - run:
+        name: Download Blender Source
+        command: git clone git://git.blender.org/blender.git
+      - run:
+        name: Download all Blender
+        command: bash tools/utils/download_blender.sh all blender-bin
+      - run:
+        name: Generate pip Packages
+        command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin/blender-2.78-windows64
