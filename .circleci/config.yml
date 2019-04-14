@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/fake-bpy-module
+    docker:
+      - image: ubuntu:latest
     steps:
       - run:
         name: Download Blender Source
