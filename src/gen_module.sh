@@ -8,11 +8,11 @@ if [ $# -ne 4 ]; then
     exit 1
 fi
 
-source_dir=${1}
-blender_dir=${2}
-branch_name=${3}
-output_dir=${4}
 current_dir=`pwd`
+source_dir=${current_dir}/${1}
+blender_dir=${current_dir}/${2}
+branch_name=${3}
+output_dir=${current_dir}/${4}
 tmp_dir=${current_dir}/${TMP_DIR_NAME}
 
 # make temporary directory
