@@ -17,7 +17,7 @@ declare -A BLENDER_DOWNLOAD_URL_MACOSX=(
     ["v279"]="https://download.blender.org/release/Blender2.79/blender-2.79-macOS-10.6.tar.gz"
     ["v279a"]="https://download.blender.org/release/Blender2.79/blender-2.79a-macOS-10.6.zip"
     ["v279b"]="https://download.blender.org/release/Blender2.79/blender-2.79b-macOS-10.6.zip"
-    ["v280"]="https://builder.blender.org/download/blender-2.80-14884cda1ff5-OSX-10.9-x86_64.zip"
+    ["v280"]="https://builder.blender.org/download/blender-2.80-860a9f979d60-OSX-10.9-x86_64.zip"
 )
 
 declare -A BLENDER_DOWNLOAD_URL_WIN64=(
@@ -28,7 +28,18 @@ declare -A BLENDER_DOWNLOAD_URL_WIN64=(
     ["v279"]="https://download.blender.org/release/Blender2.79/blender-2.79-windows64.zip"
     ["v279a"]="https://download.blender.org/release/Blender2.79/blender-2.79a-windows64.zip"
     ["v279b"]="https://download.blender.org/release/Blender2.79/blender-2.79b-windows64.zip"
-    ["v280"]="https://builder.blender.org/download/blender-2.80-14884cda1ff5-win64.zip"
+    ["v280"]="https://builder.blender.org/download/blender-2.80-860a9f979d60-win64.zip"
+)
+
+declare -A BLENDER_DOWNLOAD_URL_LINUX=(
+    ["v278"]="https://download.blender.org/release/Blender2.78/blender-2.78-linux-glibc219-x86_64.tar.bz2"
+    ["v278a"]="https://download.blender.org/release/Blender2.78/blender-2.78a-linux-glibc219-x86_64.tar.bz2"
+    ["v278b"]="https://download.blender.org/release/Blender2.78/blender-2.78b-linux-glibc219-x86_64.tar.bz2"
+    ["v278c"]="https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2"
+    ["v279"]="https://download.blender.org/release/Blender2.79/blender-2.79-linux-glibc219-x86_64.tar.bz2"
+    ["v279a"]="https://download.blender.org/release/Blender2.79/blender-2.79a-linux-glibc219-x86_64.tar.bz2"
+    ["v279b"]="https://download.blender.org/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2"
+    ["v280"]="https://builder.blender.org/download/blender-2.80-860a9f979d60-linux-glibc224-x86_64.tar.bz2"
 )
 
 declare -A NEED_MOVE_MACOSX=(
@@ -39,6 +50,9 @@ declare -A NEED_MOVE_MACOSX=(
 )
 
 declare -A NEED_MOVE_WIN64=(
+)
+
+declare -A NEED_MOVE_LINUX=(
 )
 
 function download_blender() {

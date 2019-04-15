@@ -89,7 +89,6 @@ if [ ${target} = "release" ]; then
     python setup.py bdist_wheel
 
     # copy the generated package to releaes directory
-    tar cvfz dddddddddddddddd
     cp -r dist ${release_dir}/
 
     # clean up
