@@ -79,7 +79,7 @@ if [ ${target} = "release" ]; then
     # generate fake bpy module
     fake_module_dir="out"
     ver=v${version%.*}${version##*.}
-    sh ${SCRIPT_DIR}/../../src/gen_module.sh ${SCRIPT_DIR}/${source_dir} ${SCRIPT_DIR}/${blender_dir} ${BLENDER_TAG_NAME[${ver}]} ${fake_module_dir}
+    sh ${SCRIPT_DIR}/../../src/gen_module.sh ${CURRENT_DIR}/${source_dir} ${CURRENT_DIR}/${blender_dir} ${BLENDER_TAG_NAME[${ver}]} ${fake_module_dir}
     mv ${fake_module_dir}/* .
     rm -r ${fake_module_dir}
 
@@ -92,7 +92,7 @@ if [ ${target} = "release" ]; then
     cp -r dist ${release_dir}/
 
     # clean up
-    cd ${SCRIPT_DIR}
+    cd ${CURRENT_DIR}
     rm -rf ${tmp_dir}
 
 elif [ ${target} = "develop" ]; then
@@ -103,7 +103,7 @@ elif [ ${target} = "develop" ]; then
     # generate fake bpy module
     fake_module_dir="out"
     ver=v${version%.*}${version##*.}
-    sh ${SCRIPT_DIR}/../../src/gen_module.sh ${SCRIPT_DIR}/${source_dir} ${SCRIPT_DIR}/${blender_dir} ${BLENDER_TAG_NAME[${ver}]} ${fake_module_dir}
+    sh ${SCRIPT_DIR}/../../src/gen_module.sh ${CURRENT_DIR}/${source_dir} ${CURRENT_DIR}/${blender_dir} ${BLENDER_TAG_NAME[${ver}]} ${fake_module_dir}
     mv ${fake_module_dir}/* .
     rm -r ${fake_module_dir}
 
@@ -111,7 +111,7 @@ elif [ ${target} = "develop" ]; then
     python setup.py develop
 
     # clean up
-    cd ${SCRIPT_DIR}
+    cd ${CURRENT_DIR}
     rm -rf ${tmp_dir}
 fi
 
