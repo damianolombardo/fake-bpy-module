@@ -177,6 +177,14 @@ else
             move_from=${NEED_MOVE_WIN64[${ver}]}
         fi
         download_blender ${ver} ${url} ${move_from}
+    elif [ ${os} == "Linux" ]; then
+        ver=v${version%.*}${version##*.}
+        url=${BLENDER_DOWNLOAD_URL_LINUX[${ver}]}
+        move_from=""
+        if [[ "${NEED_MOVE_LINUX[${ver}]+_}" == "_" ]]; then
+            move_from=${NEED_MOVE_LINUX[${ver}]}
+        fi
+        download_blender ${ver} ${url} ${move_from}
     else
         echo "Not supported operating system (OS=${os})"
         exit 1
