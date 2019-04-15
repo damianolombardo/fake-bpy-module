@@ -155,6 +155,16 @@ if [ ${version} = "all" ]; then
             download_blender ${KEY} ${url} ${move_from} &
             pids+=($!)
         done
+    elif [ ${os} == "Linux" ]; then
+        for KEY in ${!BLENDER_DOWNLOAD_URL_LINUX[@]}; do
+            url=${BLENDER_DOWNLOAD_URL_LINUX[${KEY}]}
+            move_from=""
+            if [[ "${NEED_MOVE_LINUX[${KEY}]+_}" == "_" ]]; then
+                move_from=${NEED_MOVE_LINUX[${KEY}]}
+            fi
+            download_blender ${KEY} ${url} ${move_from} &
+            pids+=($!)
+        done
     else
         echo "Not supported operating system (OS=${os})"
         exit 1
