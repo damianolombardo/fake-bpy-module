@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/
     docker:
       - image: ubuntu:latest
     branches:
@@ -19,11 +18,12 @@ jobs:
       - run:
           name: Download all Blender
           command: bash tools/utils/download_blender.sh all blender-bin
-          working_directory: ~/fake-bpy-module
       - run:
-          name: Generate pip Packages
-          command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin/blender-2.78-windows64
-          working_directory: ~/fake-bpy-module
+          name: Make build directory
+          command: mkdir build
+      - run:
+          name: Generate pip Packages (Blender 2.78)
+          command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin/blender-2.78-windows64 && mv tools/pip_package/release/dist
       - store_artifacts:
-          path: ~/fake-bpy-module/tools/pip_package
+          path: tools/pip_package/build
           destination: fake-bpy-module-2.78
