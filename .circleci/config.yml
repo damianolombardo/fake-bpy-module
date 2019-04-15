@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: ubuntu:latest
+    environment:
+      DEBIAN_FRONTEND: noninteractive
     branches:
       only:
         - master
