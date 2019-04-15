@@ -85,11 +85,11 @@ if [ ${target} = "release" ]; then
 
     # build pip package
     rm -rf fake_bpy_module*.egg-info/ dist/ build/
-    python setup.py sdist
-    python setup.py bdist_wheel
+    python3 setup.py sdist
+    python3 setup.py bdist_wheel
 
     # copy the generated package to releaes directory
-    cp -r dist ${release_dir}/
+    mv dist ${release_dir}/${version}
 
     # clean up
     cd ${CURRENT_DIR}
@@ -108,7 +108,7 @@ elif [ ${target} = "develop" ]; then
     rm -r ${fake_module_dir}
 
     # build and install package
-    python setup.py develop
+    python3 setup.py develop
 
     # clean up
     cd ${CURRENT_DIR}

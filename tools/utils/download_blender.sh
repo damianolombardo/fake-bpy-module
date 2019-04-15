@@ -53,6 +53,7 @@ declare -A NEED_MOVE_WIN64=(
 )
 
 declare -A NEED_MOVE_LINUX=(
+    ["v278"]="blender-2.78-linux-glibc219-x86_64"
 )
 
 function download_blender() {
@@ -73,10 +74,10 @@ function download_blender() {
         curl ${url} -o ${filename}
         unzip ${filename}
         rm ${filename}
-    elif [ ${url##*.} = "gz" ]; then
-        filename=${filename}.gz
+    elif [ ${url##*.} = "bz2" ]; then
+        filename=${filename}.bz2
         curl ${url} -o ${filename}
-        tar xvfz ${filename}
+        tar -jxvf ${filename}
         rm ${filename}
     fi
 

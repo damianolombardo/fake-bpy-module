@@ -3,7 +3,6 @@ import datetime
 from setuptools import setup, find_packages
 
 cur_dir = os.getcwd().replace("\\", "/")
-#blender_version = cur_dir.split('/')[-1].split('-')[-1].replace(".", "")]
 blender_version = cur_dir.split('/')[-1].split('-')[-1]
 module_name = "fake-bpy-module-{}".format(blender_version)
 
@@ -27,13 +26,10 @@ setup(
     ],
     packages=[
         "bpy",
-#        "bgl",
-#        "blf",
         "mathutils",
         "gpu",
         "freestyle",
         "bpy_extras",
-#        "aud",
         "bmesh"
     ],
     install_requires=[],
