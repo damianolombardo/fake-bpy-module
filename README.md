@@ -20,7 +20,7 @@ pip install fake-bpy-module-2.80
 ```
 
 
-## Supported Blender Version
+### Supported Blender Version
 
 |Version|PyPI|
 |---|---|
@@ -34,7 +34,7 @@ pip install fake-bpy-module-2.80
 |2.80||
 
 
-## Generate Modules Manually
+### Generate Modules Manually
 
 You can also generate the modules manually. See ([Generate Module](docs/generate_module.md)).
 
