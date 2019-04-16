@@ -64,16 +64,12 @@ if [ -e ${tmp_dir} ]; then
     echo "${tmp_dir} is already exists."
     exit 1
 fi
-if [ -e ${release_dir} ]; then
-    echo "${release_dir} is already exists"
-    exit 1
-fi
 
 
 if [ ${target} = "release" ]; then
     # setup release/temp directories
-    mkdir ${release_dir}
-    mkdir ${tmp_dir} && cd ${tmp_dir}
+    mkdir -p ${release_dir}
+    mkdir -p ${tmp_dir} && cd ${tmp_dir}
     cp ${SCRIPT_DIR}/setup.py .
 
     # generate fake bpy module
@@ -97,7 +93,7 @@ if [ ${target} = "release" ]; then
 
 elif [ ${target} = "develop" ]; then
     # setup release/temp directories
-    mkdir ${release_dir} && cd ${release_dir}
+    mkdir -p ${release_dir} && cd ${release_dir}
     cp ${SCRIPT_DIR}/setup.py .
 
     # generate fake bpy module
