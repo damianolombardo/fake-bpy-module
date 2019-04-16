@@ -32,6 +32,27 @@ jobs:
       - run:
           name: Generate pip Packages (Blender 2.78)
           command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin
+      - run:
+          name: Generate pip Packages (Blender 2.78a)
+          command: bash tools/pip_package/build_pip_package.sh release 2.78a blender blender-bin/blender-v278a-bin
+      - run:
+          name: Generate pip Packages (Blender 2.78b)
+          command: bash tools/pip_package/build_pip_package.sh release 2.78b blender blender-bin/blender-v278b-bin
+      - run:
+          name: Generate pip Packages (Blender 2.78c)
+          command: bash tools/pip_package/build_pip_package.sh release 2.78c blender blender-bin/blender-v278c-bin
+      - run:
+          name: Generate pip Packages (Blender 2.79)
+          command: bash tools/pip_package/build_pip_package.sh release 2.79 blender blender-bin/blender-v279-bin
+      - run:
+          name: Generate pip Packages (Blender 2.79a)
+          command: bash tools/pip_package/build_pip_package.sh release 2.79a blender blender-bin/blender-v279a-bin
+      - run:
+          name: Generate pip Packages (Blender 2.79b)
+          command: bash tools/pip_package/build_pip_package.sh release 2.79b blender blender-bin/blender-v279b-bin
+      - run:
+          name: Generate pip Packages (Blender 2.80)
+          command: bash tools/pip_package/build_pip_package.sh release 2.80 blender blender-bin/blender-v280-bin
       - store_artifacts:
           path: release
-          destination: fake-bpy-module-2.78
+          destination: fake-bpy-module
