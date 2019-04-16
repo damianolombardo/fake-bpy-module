@@ -31,7 +31,7 @@ jobs:
           command: mkdir build
       - run:
           name: Generate pip Packages (Blender 2.78)
-          command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin && mv tools/pip_package/release/dist
+          command: bash tools/pip_package/build_pip_package.sh release 2.78 blender blender-bin/blender-v278-bin
       - store_artifacts:
-          path: tools/pip_package/build
+          path: release
           destination: fake-bpy-module-2.78

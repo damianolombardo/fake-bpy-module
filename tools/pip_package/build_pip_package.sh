@@ -88,7 +88,7 @@ if [ ${target} = "release" ]; then
     python3 setup.py sdist
     python3 setup.py bdist_wheel
 
-    # copy the generated package to releaes directory
+    # move the generated package to releaes directory
     mv dist ${release_dir}/${version}
 
     # clean up
