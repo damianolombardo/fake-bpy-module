@@ -2,11 +2,21 @@ import os
 import datetime
 from setuptools import setup, find_packages
 
+# module name
 cur_dir = os.getcwd().replace("\\", "/")
 blender_version = cur_dir.split('/')[-1].split('-')[-1]
 module_name = "fake-bpy-module-{}".format(blender_version)
 
+# version
 version = datetime.datetime.today().strftime("%Y%m%d")
+
+# long_description
+try:
+    readme_path = "{}/README.md".format(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/"))
+    with open(readme_path, "r") as f:
+        long_description = f.read()
+except IOError:
+    long_description = ""
 
 
 setup(
@@ -18,7 +28,7 @@ setup(
     maintainer="Nutti",
     maintainer_email="nutti.metro@gmail.com",
     description="Collection of the fake Blender Python API module for the code completion.",
-    long_description="",
+    long_description=long_description,
     py_modules=[
         "bgl",
         "blf",

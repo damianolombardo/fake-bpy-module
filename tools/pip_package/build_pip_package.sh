@@ -71,6 +71,7 @@ if [ ${target} = "release" ]; then
     mkdir -p ${release_dir}
     mkdir -p ${tmp_dir} && cd ${tmp_dir}
     cp ${SCRIPT_DIR}/setup.py .
+    cp ${SCRIPT_DIR}/../../README.md .
 
     # generate fake bpy module
     fake_module_dir="out"
