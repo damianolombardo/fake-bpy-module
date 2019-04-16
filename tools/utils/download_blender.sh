@@ -39,7 +39,7 @@ declare -A BLENDER_DOWNLOAD_URL_LINUX=(
     ["v279"]="https://download.blender.org/release/Blender2.79/blender-2.79-linux-glibc219-x86_64.tar.bz2"
     ["v279a"]="https://download.blender.org/release/Blender2.79/blender-2.79a-linux-glibc219-x86_64.tar.bz2"
     ["v279b"]="https://download.blender.org/release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2"
-    ["v280"]="https://builder.blender.org/download/blender-2.80-860a9f979d60-linux-glibc224-x86_64.tar.bz2"
+    ["v280"]="https://builder.blender.org/download/blender-2.80-5ac7675f4c9c-linux-glibc224-x86_64.tar.bz2"
 )
 
 declare -A NEED_MOVE_MACOSX=(
@@ -54,6 +54,13 @@ declare -A NEED_MOVE_WIN64=(
 
 declare -A NEED_MOVE_LINUX=(
     ["v278"]="blender-2.78-linux-glibc219-x86_64"
+    ["v278a"]="blender-2.78a-linux-glibc219-x86_64"
+    ["v278b"]="blender-2.78b-linux-glibc219-x86_64"
+    ["v278c"]="blender-2.78c-linux-glibc219-x86_64"
+    ["v279"]="blender-2.79-linux-glibc219-x86_64"
+    ["v279a"]="blender-2.79a-linux-glibc219-x86_64"
+    ["v279b"]="blender-2.79b-linux-glibc219-x86_64"
+    ["v280"]="blender-2.80-5ac7675f4c9c-linux-glibc224-x86_64"
 )
 
 function download_blender() {
